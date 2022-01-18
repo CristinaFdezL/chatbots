@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+  <!-- ENTRADA -->
+  <category>
+    <pattern>HOLA</pattern>
+    <template>Bienvenido/a, con que empresa está relacionada su cita?
+    (EMASESA, EMVISESA, LIPASAM O TUSSAM)</template>
+  </category>
+  <category>
+    <pattern>BUENAS</pattern>
+    <template><srai>HOLA</srai></template>
+  </category>
+  <category>
+    <pattern>BUENAS NOCHES</pattern>
+    <template><srai>HOLA</srai></template>
+  </category>
+  <category>
+    <pattern>BUENOS DIAS</pattern>
+    <template><srai>HOLA</srai></template>
+  </category>
+  <category>
+    <pattern>BUENOS DÍAS</pattern>
+    <template><srai>HOLA</srai></template>
+  </category>
+  <category>
+    <pattern>BUENAS TARDES</pattern>
+    <template><srai>HOLA</srai></template>
+  </category>
+
+  <!-- CONVERSACIÓN -->
+  <category>
+    <pattern>CON LA EMPRESA *</pattern>
+    <template>Perfecto, indiquenos el día de la semana de lunes a viernes que desea su cita con
+    <set name="empresa"><star /></set></template>
+  </category>
+  
+  <category>
+    <pattern>EL *</pattern>
+    <template>
+      <think>
+        <set name="dia"><star /></set>
+      </think>
+      Prefiere horario de mañana o de tarde
+    </template>
+  </category>
+
+  <category>
+    <pattern>HORARIO DE *</pattern>
+    <template>
+    <think>
+        <set name="horario"><star /></set>
+    </think>
+      Perfecto, quedamos pendiente de su visita en las instalaciones de
+      <get name="empresa"><star /></get> el <get name="dia"><star /></get> en horario de <get name="horario"><star /></get>. Un saludo.
+    </template>
+  </category>
+
+</aiml>
